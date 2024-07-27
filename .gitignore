@@ -1,0 +1,7 @@
+.vscode
+logs
+dist
+build
+enc.bin
+ohm_mqtt_poller.exe
+ohm_mqtt_poller.spec

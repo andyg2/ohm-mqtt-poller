@@ -12,10 +12,6 @@ def write_credentials_file(encoded_credentials):
     with open("enc.bin", "wb") as file:
         file.write(encoded_credentials.encode())
 
-def set_environment_variable(encoded_credentials):
-    os.environ['RAMPMQTT'] = encoded_credentials
-    print("Environment variable RAMPMQTT has been set.")
-
 def encode_new_credentials():
     username = input("Enter MQTT username: ")
     password = input("Enter MQTT password: ")
@@ -35,11 +31,9 @@ def main():
     
     if encoded_credentials:
         print("Existing credentials found in enc.bin")
-        # set_environment_variable(encoded_credentials)
     else:
         print("No existing credentials found. Please enter new credentials.")
         encoded_credentials = encode_new_credentials()
-        # set_environment_variable(encoded_credentials)
 
 if __name__ == "__main__":
     main()

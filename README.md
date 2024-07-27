@@ -60,7 +60,7 @@ OHM MQTT Poller is a Python script that polls data from Open Hardware Monitor (O
    pyinstaller --onefile --noconsole ohm_mqtt_poller.py
    ```
    
-   This will create a standalone executable in the `dist` directory.
+   This will create a standalone executable in the `dist` directory. Move this executable to the same directroy as the config.json and enc.bin.
 
 ## Configuration
 
@@ -76,7 +76,9 @@ OHM MQTT Poller is a Python script that polls data from Open Hardware Monitor (O
 
 ### Credentials
 
-MQTT credentials are stored in an encoded format in the `enc.bin` file. Please note this is not at all secure, it's very simply to extract the credentials from this format. Use the `encode_mqtt_credentials.py` script to create or update this file.
+MQTT credentials are stored in a base64 encoded format in the `enc.bin` file. Use the `encode_mqtt_credentials.py` script to create or update this file.
+
+**Please note the enc.bin file is not at all secure, it is trivial to extract the credentials from this format**.
 
 ## Usage
 

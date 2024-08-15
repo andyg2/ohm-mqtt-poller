@@ -1,11 +1,12 @@
 {
   "serverID": 123765123,
+  "polling_seconds": 5,
   "ohm": {
-    "server": "192.168.88.5",
+    "server": "127.0.0.1",
     "port": 8085
   },
   "mqtt": {
-    "server": "168.212.226.204",
+    "server": "127.0.0.1",
     "port": 1883
   }
 }

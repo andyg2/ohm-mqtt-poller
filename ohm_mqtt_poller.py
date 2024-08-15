@@ -178,6 +178,10 @@ def main():
     if username is None or password is None:
         return
 
+    polling_seconds = config.get('polling_seconds')
+    if not polling_seconds:
+        polling_seconds = 60
+    
     mqtt_client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
     mqtt_client.on_connect = on_connect
 
@@ -199,10 +203,10 @@ def main():
                 logging.info(f"Data sent to MQTT broker: {essential_data}")
             else:
                 logging.warning("No data received from OHM")
-            time.sleep(60)  # Poll every 60 seconds
+            time.sleep(polling_seconds)  # Poll every polling_seconds seconds
         except Exception as e:
             logging.error(f"An error occurred: {e}")
-            time.sleep(60)  # Wait before retrying
+            time.sleep(10)  # Wait before retrying
 
 if __name__ == "__main__":
     main()

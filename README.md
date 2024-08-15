@@ -26,12 +26,12 @@ OHM MQTT Poller is a Python script that polls data from Open Hardware Monitor (O
 
 1. Clone this repository or download the source code.
 2. Install the required Python packages:
-   
+
    ```
    pip install requests paho-mqtt pyinstaller
    ```
 3. Create a `config.json` file in the same directory as the script with the following structure:
-   
+
    ```json
    {
      "serverID": 123765123,
@@ -45,28 +45,33 @@ OHM MQTT Poller is a Python script that polls data from Open Hardware Monitor (O
      }
    }
    ```
-   
+
    Replace the values with your specific configuration.
 4. Run the credential encoder script to create the `enc.bin` file:
-   
+
    ```
    python encode_mqtt_credentials.py
    ```
-   
+
    Follow the prompts to enter your MQTT username and password.
 5. (Optional) Create an executable:
-   
+
    ```
    pyinstaller --onefile --noconsole ohm_mqtt_poller.py
    ```
-   
+
    This will create a standalone executable in the `dist` directory. Move this executable to the same directroy as the config.json and enc.bin.
 
 ## Configuration
 
+### Start the Open Hardware Monitor Web Server
+
+![](assets/20240815_145023_ohm-webserver.png)
+
 ### config.json
 
 - `serverID`: A unique identifier for the server running this script
+- `polling_seconds`: The number of seconds between sending data
 - `ohm`:
   - `server`: IP address or hostname of the machine running Open Hardware Monitor
   - `port`: Port number of the Open Hardware Monitor web server (default is usually 8085)
@@ -90,14 +95,14 @@ You can run the script directly with Python:
 python ohm_mqtt_poller.py
 ```
 
-Or, if you've created an executable, simply place the executable in the **same directory** as the `config.json` and `enc.bin` files and double-click the executable file or run it from the command line.
+Or, if you've created an executable (step 5 of installation), simply place the executable in the **same directory** as the `config.json` and `enc.bin` files and double-click the executable file or run it from the command line.
 
 ### Running at Startup
 
 To make the script start automatically when Windows boots:
 
-1. Create a shortcut to the executable (or to `pythonw.exe` with the script as an argument).
-2. Press `Win + R`, type `shell:startup`, and press Enter.
+1. Create a shortcut to the executable (or to`pythonw.exe` with the script as an argument).
+2. Press`Win + R`, type`shell:startup`, and press Enter.
 3. Move the shortcut to the Startup folder that opens.
 
 ### Logging
@@ -156,4 +161,3 @@ This project uses the following open-source libraries:
 - [PyInstaller](https://www.pyinstaller.org/)
 
 Special thanks to the Open Hardware Monitor project for providing the hardware monitoring capabilities.
-
